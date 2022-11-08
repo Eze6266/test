@@ -26,19 +26,19 @@ class _SentEmailState extends State<SentEmail> {
   Timer? timer;
   bool canResendEmail = false;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
-    if (!isEmailVerified) {
-      sendVerificationEmail();
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+  //   if (!isEmailVerified) {
+  //     sendVerificationEmail();
 
-      timer = Timer.periodic(Duration(seconds: 3), (timer) {
-        checkEmailVerified();
-      });
-    }
-  }
+  //     timer = Timer.periodic(Duration(seconds: 3), (timer) {
+  //       checkEmailVerified();
+  //     });
+  //   }
+  // }
 
   Future sendVerificationEmail() async {
     final user = FirebaseAuth.instance.currentUser;

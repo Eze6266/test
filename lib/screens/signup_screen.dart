@@ -27,19 +27,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool isEmailVerified = false;
   Timer? timer;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
-    if (!isEmailVerified) {
-      sendVerificationEmail();
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   print('Reached signup');
+  //   super.initState();
+  //   isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+  //   if (!isEmailVerified) {
+  //     sendVerificationEmail();
 
-      timer = Timer.periodic(Duration(seconds: 3), (timer) {
-        checkEmailVerified();
-      });
-    }
-  }
+  //     timer = Timer.periodic(Duration(seconds: 3), (timer) {
+  //       checkEmailVerified();
+  //     });
+  //   }
+  // }
 
   Future sendVerificationEmail() async {
     final user = FirebaseAuth.instance.currentUser;
@@ -63,6 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('Reached signup build');
     return isEmailVerified
         ? HomeScreen()
         : Scaffold(
